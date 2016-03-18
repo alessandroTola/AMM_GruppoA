@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>venditore</title>
+        <meta charset="UTF-8">
+        <meta name="keywords" content="MTB, BIKE, ENDURO, MOUNTAINBIKE, BICI, venditore">
+        <meta name="description" content="Form inserimento nuovo prodotto del venditore">
+        <meta name="author" content="Alessando Tola">
+    </head>
+    <body>
+        <div>
+            <h2>Inserisci nuovo prodotto</h2>
+            <form action="newproduct.java" method="post">
+                <div>    
+                    <label for="nomeprod">Nome prodotto:</label>
+                    <input type="text" name="nomeprod" id="nomeprod" placeholder="Nome prodotto" />
+                </div>
+                <div>
+                    <label for="immagine">URL immagine:</label>
+                    <input type="url" name="immagine" id="immagine" placeholder="Link immagine" />
+                </div>
+                <div>
+                    <label for="descrizione">Descrizione dell'oggetto</label>
+                    <textarea rows="3" cols="20" name="descrizione" id="descrizione">Descrizione
+                    </textarea>
+                </div>
+                <div>
+                    <label for="prezzo">Prezzo</label>
+                    <input type="number" name="prezzo" id="prezzo" min="1" max="5" step="0.1"/>
+                </div>
+                <div>
+                    <label for="quantita">Quantità di oggetti disponibili</label>
+                    <input type="number" name="quantita" id="quantita" min="1" max="3" />
+                </div>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <nav>
+            <h6>
+                <a href="./login.html">Login</a>
+                <a href="./descrizione.html">Home</a>
+            </h6>
+        </nav>
+    </body>
+</html>
