@@ -13,16 +13,6 @@ and open the template in the editor.
         <meta name="author" content="Alessando Tola">
     </head>
     <body>
-        <div class="Login-form">
-            <h2>Inserisci i tuoi dati per eseguire il login</h2>
-            <form action="Prova.java" method="get">
-                <label for="userid">User id</label>
-                <input type="text" name="userid" id="userid" placeholder="Nickname" />
-                <label for="pswd">Password</label>
-                <input type="password" name="pswd" id="pswd" value="valore oscurato" />
-            </form>
-            <button type="submit">Submit</button> 
-        </div>
         <nav>
             <h6>
                 <a href="./descrizione.html">Home</a>
@@ -30,5 +20,15 @@ and open the template in the editor.
                 <a href="./venditore.html">Venditore</a>
             </h6>
         </nav>
+        <div class="Login-form">
+            <h2>Inserisci i tuoi dati per eseguire il login</h2>
+            <form action="Prova.java" method="post">
+                <label for="userid">User id</label>
+                <input type="text" name="userid" id="userid" placeholder="Nickname" />
+                <label for="pswd">Password</label>
+                <input type="password" name="pswd" id="pswd" value="valore oscurato" />
+            </form>
+            <button type="submit">Submit</button> 
+        </div>
     </body>
 </html>
