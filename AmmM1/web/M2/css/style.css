@@ -1,0 +1,867 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 23-mar-2016, 16.27.35
+    Author     : alessandrotola
+*/
+
+*
+{
+    font-size: 11px;
+}
+/* Pagina principale */
+
+.index
+{
+    font-family: 'Cantarell', sans-serif;
+    font-size: 50px;
+    color: #C0C0C0;
+    text-decoration: none;
+    text-align: center;
+    line-height: 200px;    
+}
+div.index
+{
+    height: 200px;
+}
+
+div:hover.index
+{
+    background: url("../Immagini/cerchi.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    
+}
+body
+{   
+    height: auto;
+    background: url("../Immagini/Sfondi/Grey3.jpg") no-repeat center fixed;
+    background-size: cover;
+}
+
+.page
+{
+    width: 100%;
+    height: auto;
+    margin-top: 40px;
+    min-width: 400px;
+
+}
+.clear
+{
+    clear: both;
+}
+footer
+{
+    font-size: 16px;
+    position: absolute;
+    color: white;
+    border: 2px solid white;
+    background: #737373;
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    float: left;
+}
+
+/* Testo */
+
+/* Imposto tutti i testi con il font scelto */
+*
+{
+    font-family: 'Cantarell', sans-serif; 
+}
+    /* Tolgo a tutti i link la sottolineatura */
+a
+{
+    text-decoration: none;
+}
+
+a:hover
+{
+    font-weight: bold;
+}
+
+
+
+/* Header */
+
+/* Barre navigazione header */
+
+.bar
+{
+    
+    height: 35px;
+    background-color: #737373;
+    border-bottom: 7px solid #99ffcc;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 100%;
+    z-index: 100;
+    
+}
+
+a.nevHeader
+{
+    display: block;
+    font-size: 12px;
+    height: 35px;
+    line-height: 35px;
+    width: 75px;
+    margin: auto;
+    color: #99ffcc;
+}
+
+
+a.nevHeader:hover
+{
+    color: #737373;
+}
+li.nevHeader:hover
+{
+    border-bottom: 7px solid #737373;
+    color: #737373;
+    background: #99ffcc;
+}
+li.nevHeader:active
+{
+    background-color: #99ffcc;
+}
+div.nevHeader
+{
+    height: 35px;
+    width: 300px;
+    float: right;
+}
+ul.nevHeader li
+{   
+    display: inline;
+}
+ul.nevHeader
+{
+    margin: 0px;
+    padding: 0px;
+    height: 35px;
+    display: block;
+    width: 340px;
+    float: right;
+    margin-right: 5%;
+}
+li.nevHeader
+{
+    height: 35px;
+    width: 75px;
+    display: block;
+    line-height: 20px;
+    float: left;
+    margin: 0px 4px;
+    text-align: center;
+}
+
+/* Side bar */
+
+@media screen and (min-width: 1024px){
+    .saidMenu
+    {
+        width: 250px;
+        height: 500px;
+        float: left;
+        margin: 10px;
+        margin-top: 30px;
+        border: 3px solid #737373; 
+        background-color: white;
+        opacity: .8;
+        background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0));
+    }
+    li.miniMenu
+    {
+        height: 25px;
+        margin: 1px auto;
+    }
+    .content
+    {
+        margin-left: 270px;
+        margin-right: 10px;
+        margin-top: 30px;
+        width: 70%;
+        padding-top: 30px;
+        min-width: 450px;
+    }
+    
+    ul.serv > li
+    {
+        display: inline;
+        float: left;
+        margin: 10px;
+    }
+    li.miniMenu a
+    {
+        padding-top: 2px;
+        display: block;
+        font-size: 13px;
+    }
+    .logo
+    {
+        height: 70px;
+        width: 300px;
+        background-size: contain;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        background-image: url("../Immagini/Sfondi/LogoScritta.png");
+        background-repeat: no-repeat;
+        z-index: 150;
+        margin-left: 30px;
+    }
+    .piccolo > a
+    {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 480px)
+              and (max-width: 1024px){
+    .saidMenu
+    {
+        width: 200px;
+        height: 400px;
+        float: left;
+        margin-left: 10px;
+        margin-top: 30px;
+        border: 3px solid #737373; 
+        background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0));
+        opacity: .8;
+    }
+    
+    .content
+    {
+        margin-left: 220px;
+        margin-right: 10px;
+        margin-top: 30px;
+        width: 70%;
+        padding-top: 30px;
+        min-width: 450px;
+    }
+    ul.serv > li
+    {
+        display: inline;
+        float: left;
+        margin: 2px;
+
+    }
+    ul.serv
+    {
+        min-width: 450px;
+    }
+    li.miniMenu
+    {
+        height: 25px;
+        margin: 1px auto;
+    }
+    li.miniMenu a
+    {
+        padding-top: 2px;
+        display: block;
+        font-size: 13px;
+
+    }
+    .logo
+    {
+        height: 40px;
+        width: 150px;
+        background-size: contain;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        background-image: url("../Immagini/Sfondi/LogoScritta.png");
+        background-repeat: no-repeat;
+        z-index: 150;
+        margin-left: 30px;
+        margin-top: 35px;
+    }
+    .piccolo > a
+    {
+        display: none;
+    }
+    
+}
+
+@media screen and (max-width: 480px){
+    .piccolo:hover .saidMenu
+    {
+        display: inline-block;
+        z-index: 111;
+        top: 55px;
+    }
+    
+    .piccolo > a
+    {
+        padding: 5px 15px;
+        border: 2px solid #99ffcc;
+        cursor: pointer;
+        position: absolute;
+        left: 2px;
+        z-index: 105;
+        background: #f1f1f1;
+    }
+       
+    div.saidMenu nav
+    {
+        height: 100%;
+    }
+    
+    /* Elimino la scritta menu per motivi di spazio*/
+    nav h2, .saidMenu h2
+    {
+        display: none;
+    }
+    
+    .saidMenu
+    {   
+        width: 30%;
+        height: 200px;
+        float: left;
+        margin-top: 10px;
+        border: 2px solid #737373; 
+        background-color: white;
+        opacity: .8;
+        min-width: 200px;
+        position: absolute;
+        display: none;
+    }
+    
+    .content
+    {
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 40px;
+        width: 95%;
+        padding-top: 15px;
+    }
+    /* Disattivo la visualizzazione della lista*/
+    .none
+    {
+        display: none;
+    }
+    ul.serv li
+    {
+        display: block;
+        float: none;
+    }
+    /* Elimino il menu latterale nella pagina desccrizione */
+    .miniMenu
+    {
+        display: none;
+    }
+}
+
+/* */
+li.miniMenu a:visited
+{
+    text-decoration: none;
+    z-index: 155;
+}
+li.miniMenu a
+{
+    color: black;
+}
+li.miniMenu
+{
+    list-style-type: none;
+    width: 90%;
+    text-align: center;
+    opacity: 1;
+}
+
+li.miniMenu:hover
+{
+    background-color: #99ffcc;
+}
+li.miniMenu a:hover
+{
+    color: black;
+}
+.saidMenu h2
+{
+    text-align: center;
+    font-size: 15px;
+}
+ul.miniMenu
+{
+    margin: auto;
+    padding: 0px;
+}
+
+
+/* Sidebar Categorie */
+@media screen and (min-width: 1024px){
+    .category
+    {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        text-align: center;
+    }
+    li.dropdown
+    {
+        height: 25px;
+        width: 90%;
+        margin: auto;
+    }
+    li.dropdown a, .dropbtn
+    {
+        display: block;
+        padding: 3px 50px;
+        text-align: center;
+    }
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    }
+    li.dropdown a:hover
+    {
+        color: black;
+    }
+    li.dropdown:hover
+    {
+        background: #99ffcc;
+    }
+
+    li.dropdown a:visited
+    {
+        text-decoration: none;
+    }
+    li.dropdown a
+    {
+        color: black;
+        opacity: 1;
+        font-size: 13px;
+    }
+
+    li.dropdown {
+        display: inline-block;
+    }
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        text-align: left;
+        display: block;
+    }
+
+    .dropdown-content a:hover 
+    {
+        background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: inline-block;
+        z-index: 500;
+    }
+}
+@media screen and (min-width: 480px)
+            and (max-width: 1024px){
+    .category
+    {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        text-align: center;
+    }
+    li.dropdown
+    {
+        height: 25px;
+        width: 90%;
+        margin: auto;
+    }
+    li.dropdown a, .dropbtn
+    {
+        display: block;
+        padding: 3px 50px;
+        text-align: center;
+    }
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    }
+    li.dropdown a:hover
+    {
+        color: black;
+    }
+    li.dropdown:hover
+    {
+        background: #99ffcc;
+    }
+
+    li.dropdown a:visited
+    {
+        text-decoration: none;
+    }
+    li.dropdown a
+    {
+        color: black;
+        opacity: 1;
+        font-size: 13px;
+    }
+
+    li.dropdown {
+        display: inline-block;
+    }
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        text-align: left;
+        display: block;
+    }
+
+    .dropdown-content a:hover 
+    {
+        background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: inline-block;
+        z-index: 500;
+    }
+    
+}
+@media screen and (max-width: 480px)
+{
+    .category
+    {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        text-align: center;
+    }
+    li.dropdown
+    {
+        height: 30px;
+        width: 80px;
+        margin: auto;
+        padding: 2px 20px;
+        display: block;
+        margin-top: 1px;
+    }
+    li.dropdown a, .dropbtn
+    {
+        display: block;
+        padding: 3px;
+        text-align: center;
+    }
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    }
+    li.dropdown a:hover
+    {
+        color: black;
+    }
+    li.dropdown:hover
+    {
+        background: #99ffcc;
+    }
+
+    li.dropdown a:visited
+    {
+        text-decoration: none;
+    }
+    li.dropdown a
+    {
+        color: black;
+        opacity: 1;
+        font-size: 13px;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        text-align: left;
+        display: block;
+    }
+
+    .dropdown-content a:hover 
+    {
+        background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: inline-block;
+        z-index: 500;
+    }
+    .dropdown-content:hover
+    {
+        z-index: 300;
+    }
+}
+.saidMenu
+{
+    z-index: 10;
+}
+.form
+{
+    z-index: 9;
+}
+
+/* Paragrafi pagina descrizione */
+
+.chi, .come, .cosa, .perche, div.serv
+{
+    border: 3px solid white;
+    margin: 10px;
+    background-color: #99ffcc;
+}
+
+h2#chi, 
+h2#come, 
+h2#cosa, 
+h2#perche,
+h2#serv
+{
+    margin: 0px 30px;
+    font-size: 16px;
+}
+p
+{
+    margin: 5px 15px;
+}
+
+ul.serv
+{
+    height: 100px;
+    padding: 5px 15px;
+    margin-top: 0px;
+}
+
+
+
+/* Form e buttoni */
+    /* Stili pulsanti */
+div h3
+{
+    font-size: 15px;
+}
+form
+{
+    width: auto;
+    height: 40%;
+    background-color: #99ffcc;
+    margin: 20px auto;
+    overflow: hidden;
+    padding: 10px;
+    text-align: left;
+    
+}
+
+form#prodotto
+{
+    height: 60%;
+}
+
+div.bottoni
+{
+    width: 100%;
+    height: 35px;
+    position: relative;
+}
+
+button 
+{
+    background-color: transparent; 
+    border: 2px solid black;
+    color: black;
+    height: 30.6px;
+    width: 100px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    
+}
+
+
+button:hover 
+{
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+}
+    /* Stili per le lable */
+label, input, textarea {     /* Stili comuni agli elementi del form */
+    color: black;            /* Colore del testo */
+    float: left;             /* Float a sinistra */
+    margin: 10px 0;          /* Margini */
+    padding-left: 10px;    
+
+}
+label { 
+    display: block; 
+    line-height: 20px; 
+    width: 150px; 
+    font-size: 15px;
+}
+    /* Stili per imput */
+input, textarea {           /* Stili per il campo di testo e per la textarea */
+    background: #99ffcc;        
+    border: 2px solid white;    
+    color: black; 
+    height: 30px;               
+    line-height: 30px;          
+    width: 250px;               
+    padding: 0 10px;           
+    box-sizing: border-box;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    
+}
+ 
+input 
+{ 
+    padding-left: 30px;
+}
+
+textarea { 
+
+    background: white; 
+    font-size: 12px;
+    height: 100px;
+    width: 250px;
+    overflow: hidden; 
+}
+
+input:focus, textarea:focus {
+  border: 2px solid black;   /* bordo degli elementi */
+}
+
+/* Tabella form */
+@media screen and (min-width: 1024px){
+    #table
+    {
+        width: 600px;
+        border: 3px solid white;
+        
+        float: left;
+    }
+    
+    div.form
+    {
+        width: 480px;
+        height: auto;
+        min-width: 480px;
+        background-color: #99ffcc;
+        text-align: center; 
+        padding-top: 10px;
+        border: 3px solid white;
+    }
+}
+@media screen and (min-width: 480px)
+              and (max-width: 1024px){ 
+    #table
+    {
+        width: 600px;
+        border: 3px solid white;
+    }
+    div.form
+    {
+        width: 480px;
+        height: auto;
+        background-color: #99ffcc;
+        text-align: center; 
+        padding-top: 10px;
+        border: 3px solid white;
+
+    }
+}
+@media screen and (max-width: 480px){ 
+    #table
+    {
+        width: 600px;
+        border: 3px solid white;
+        margin: 5px auto;
+        margin-top: 30px;
+    }
+    div.form
+    {
+        width: 480px;
+        height: auto;
+        background-color: #99ffcc;
+        text-align: center; 
+        padding-top: 10px;
+        margin-top: 30px;
+        border: 3px solid white;
+        float: left;
+        margin-top: 40px;
+    }
+}
+/* Tabella */
+table
+{
+    padding: 15px;
+    border-collapse: collapse;
+    width: 100%;
+}
+    /* Stile per la riga intestazione */
+th
+{
+    border-bottom: 2px solid black;
+    font-style: italic;
+    font-size: 14px;
+    background-color: #262626; 
+    color: white;
+}
+td, th {
+    padding: 8px;
+    text-align: center;
+}
+    /* Alternanza colore righe */
+tr:nth-child(even)
+{
+    background-color: #f2f2f2;
+}
+tr:nth-child(odd)
+{
+    background-color: white;
+
+}
+    /* Dimensioni per i campi delle colonne */
+.prodotto
+{
+    width: 100px;
+}
+.tot
+{
+    width: 30px;
+}
+.prezzo
+{
+    width: 80px;
+}
+
+
+
+
+
+
+
+
+
