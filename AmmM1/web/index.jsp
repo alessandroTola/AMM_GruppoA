@@ -1,3 +1,10 @@
+<%-- 
+    Document   : index
+    Created on : 27-apr-2016, 18.35.36
+    Author     : alessandrotola
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -6,16 +13,12 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Task 1 (inizio M1)</title>
-        <meta charset="UTF-8">
-        <meta name="keywords" content="MTB, BIKE, ENDURO, MOUNTAINBIKE, BICI, descrizione">
+        <title>Home</title>
         <meta name="description" content="Pagina descrizione MTB no shTop">
-        <meta name="author" content="Alessando Tola">
-        <link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
-        <link href='https://fonts.googleapis.com/css?family=Cantarell' rel='stylesheet' type='text/css'>     
+        <jsp:include page="./jspSupporto/Head.jsp" />   
     </head>
     <body>
-        
+        <jsp:include page="./jspSupporto/Header.jsp" />
         <div class="page">
             <div class="saidMenu">
                 <nav>
@@ -96,7 +99,7 @@ and open the template in the editor.
                 </div>
             </div>
         </div>
-    <div class="clear"></div>
-    <footer><p>Questo bellissimo sito è prodotto da Alessandro Tola</p></footer>
+    <jsp:include page="./jspSupporto/footer.jsp" />
     </body>
 </html>
+
