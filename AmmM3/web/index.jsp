@@ -1,0 +1,105 @@
+<%-- 
+    Document   : index
+    Created on : 27-apr-2016, 18.35.36
+    Author     : alessandrotola
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Home</title>
+        <meta name="description" content="Pagina descrizione MTB no shTop">
+        <jsp:include page="./jspSupporto/Head.jsp" />   
+    </head>
+    <body>
+        <jsp:include page="./jspSupporto/Header.jsp" />
+        <div class="page">
+            <div class="saidMenu">
+                <nav>
+                    <h2>Menu:</h2>
+                    <ul class="miniMenu">
+                        <li class="miniMenu"><a href="#chi">Chi?</a></li>
+                        <li class="miniMenu"><a href="#cosa">Cosa?</a></li>
+                        <li class="miniMenu"><a href="#perche">Perche?</a></li>
+                        <li class="miniMenu"><a href="#come">Come?</a></li>
+                        <li class="miniMenu"><a href="#serv">Servizi</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="content" id="description">
+                <div class="chi">
+                    <h2 id="chi">Chi siamo</h2>
+                    <p>
+                        Siamo un gruppo di squinternati che amano la mountainbike, dopo anni di escursioni, gare, ossa rotte, abbiamo deciso di aprire un 
+                        bellissimo shop online per condividere con voi la nostra esperienza. Qui non troverai solo prodotti da acquistare, ma esperienza 
+                        molta serietà nel lavoro, ma poca nella vita. La bici non è solo sudare e pedalare ma birra a fiumi quando arrivi alla fine, 
+                        patatine salsiccia e chi più ne ha più ne metta.
+                        Se sei uno di quelli che vuole solo faticare questo non è il posto giusto per te, molto probabilmente non bevi neanche birra,
+                        e di chi non beve birra non ci si può fidare.
+                    </p>
+                </div>
+                <div class="cosa">
+                    <h2 id="cosa">Cosa facciamo</h2>
+                    <p>
+                        Vendiamo prodotti ed esperienza, qui troverai i migliori marchi nel settore ciclismo enduristico, ti sapremo consigliare e guidare 
+                        verso il prodotto giusto per te. Bici, abbigliamento, componenti, tutto quello che hai sempre desiderato ma che non hai mai avuto 
+                        il coraggio di chiedere. 
+                    </p>
+                </div>   
+                <div class="perche">
+                    <h2 id="perche">Perché lo facciamo</h2>
+                    <p>
+                        La risposta è semplice, siamo stufi di quei siti web super seri dove si punta solo al fatturato, noi vogliamo un negozio
+                        dove tu ti possa sentire a casa, e nessuno ti giudicherà se arrivi ultimo alle gare, se preferisci bere una birra la sera prima
+                        di uscire in bici, perché in fondo lo sai che sei un po' alcolizzato. 
+                        Noi siamo qui a consigliarti cosa montare sulla tua bici, perché tu non hai idea dei mille mila standard che sono presenti nella tua bicicletta,
+                        a te interessa solo che funzioni e che sia molto gaggia e colorata.
+                        Ecco noi siamo qui per questo
+                    </p>
+                </div>
+                <div class="come">
+                    <h2 id="come">Come lo facciamo</h2>
+                    <p>
+                        Semplice come bere un bicchiere di birra, dopo che ti abbiamo fatto sbronzare per bene, e i tuoi freni inibitori sono crollati, 
+                        inizierà il percorso che ci porterà a capire che tipo di rider sei, cose è meglio per te. Sarà un percorso lungo e complesso,
+                        ma alla fine sarai un vero biker.
+                    </p>
+                </div>
+                <div class="serv">
+                    <h2 id="serv">Cosa puoi trovare</h2>
+                    <ul class="serv">
+                        <li><h3>Biciclette</h3>
+                            <ul class="none">
+                                <li>MTB</li>
+                                <li>Strada</li>
+                                <li>City bike</li>
+                            </ul>
+                        </li>
+                        <li><h3>Componenti</h3>
+                            <ul class="none">
+                                <li>Ruote</li>
+                                <li>Sospensioni</li>
+                                <li>Freni</li>
+                            </ul>
+                        </li>
+                        <li><h3>Abbigliamento</h3>
+                            <ul class="none">
+                                <li>Maglie</li>
+                                <li>Pantaloni</li>
+                                <li>Scarpe</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <jsp:include page="./jspSupporto/footer.jsp" />
+    </body>
+</html>
+
