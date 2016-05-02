@@ -32,8 +32,8 @@ and open the template in the editor.
                     <c:when test="${cliente.getSaldo().getSaldo() > prodotto.getPrezzo()}" >
                         <h3>Il tuo saldo disponibile è ${cliente.getSaldo().getSaldo()}</h3>
                         <h3>Hai abbastanza soldi, conferma acquisto</h3>
-                        <form>
-                        <button type="submit" name="compra">Acquista</button>
+                        <form class="Login-form" action="Acquista" method="post">
+                        <button type="submit" name="Submit">Acquista</button>
                         </form>
                     </c:when>
                     <c:otherwise>
