@@ -46,11 +46,13 @@ public class CompraProdotto extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         int idProdotto = Integer.parseInt(request.getParameter("idProdotto"));
-        Prodotti prod = OggettiFactory.getInstance()
+        Prodotti prod = new Prodotti();
+        prod = OggettiFactory.getInstance()
                 .getProdotto(idProdotto);
-        request.setAttribute("prodotto", OggettiFactory.getInstance()
-                .getProdotto(idProdotto));
+        
+        request.setAttribute("prodotto", prod);
         HttpSession session = request.getSession(true);
+        
         int quantita = prod.getQuantita();
         Utenti cliente = new Cliente();
         

@@ -199,7 +199,8 @@ public class OggettiFactory {
             //Controllare se sono andate a buonfine 
 
             int row = addProdotto.executeUpdate();
-            if(row != 1 ){
+            int row4 = editSaldo.executeUpdate();
+            if(row != 1 || row4 !=1){
                 conn.rollback();
             }
                
