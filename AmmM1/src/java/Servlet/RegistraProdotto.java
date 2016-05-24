@@ -5,9 +5,17 @@
  */
 package Servlet;
 
+import amm.model.OggettiFactory;
 import amm.model.Prodotti;
+import amm.model.Utenti;
+import amm.model.UtentiFactory;
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,19 +50,30 @@ public class RegistraProdotto extends HttpServlet {
         {
             
             String nomeProdotto = request.getParameter("nomeprod");
-            String immagine = request.getParameter("immagine");
+            String linkFoto = request.getParameter("immagine");
             String descrizione = request.getParameter("descrizione");
             Double prezzo = Double.parseDouble(request.getParameter("prezzo"));
             Integer quantita = Integer.parseInt(request.getParameter("quantita"));
+            Utenti venditore = (Utenti) session.getAttribute("venditore");
+            Integer seller_id = venditore.getId();
+            
             Prodotti nuovoProdotto = new Prodotti();
             session.setAttribute("nuovoProdotto", nuovoProdotto);
             nuovoProdotto.setNomeProdotto(nomeProdotto);
             nuovoProdotto.setDescrizione(descrizione);
-            nuovoProdotto.setLinkFoto(immagine);
+            nuovoProdotto.setLinkFoto(linkFoto);
             nuovoProdotto.setPrezzo(prezzo);
             nuovoProdotto.setQuantita(quantita);
-
+            
+            try{
+                OggettiFactory.getInstance().RegistrazioneProdotto(nomeProdotto, descrizione, prezzo, linkFoto, 
+            quantita, seller_id);
+            }catch(SQLException e){
+                
+            }
         }
+        
+        
         
         request.getRequestDispatcher("Nuovo_Prodotto.jsp")
                .forward(request, response);
@@ -98,6 +117,7 @@ public class RegistraProdotto extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
 }
     
 

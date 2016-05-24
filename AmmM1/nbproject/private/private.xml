@@ -3,11 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/alessandrotola/Desktop/Facoltà/AMM/Lab/prova/src/java/Servlet/Login.java</file>
-            <file>file:/Users/alessandrotola/Desktop/Facoltà/AMM/Lab/prova/web/jspSupporto/tabella.jsp</file>
-            <file>file:/Users/alessandrotola/Desktop/Facoltà/AMM/Lab/prova/src/java/Servlet/CompraProdotto.java</file>
-            <file>file:/Users/alessandrotola/Desktop/Facoltà/AMM/Lab/prova/web/ProdottoAcquistato.jsp</file>
-            <file>file:/Users/alessandrotola/Desktop/Facoltà/AMM/Lab/prova/src/java/Servlet/RegistraProdotto.java</file>
+            <file>file:/Users/alessandrotola/Desktop/Facoltà/AMM/AmmM1/AMM_GruppoA/AmmM1/src/java/amm/model/Prodotti.java</file>
+            <file>file:/Users/alessandrotola/Desktop/Facoltà/AMM/AmmM1/AMM_GruppoA/AmmM1/src/java/Servlet/CompraProdotto.java</file>
+            <file>file:/Users/alessandrotola/Desktop/Facoltà/AMM/AmmM1/AMM_GruppoA/AmmM1/src/java/amm/model/OggettiFactory.java</file>
+            <file>file:/Users/alessandrotola/Desktop/Facoltà/AMM/AmmM1/AMM_GruppoA/AmmM1/src/java/Servlet/Acquista.java</file>
+            <file>file:/Users/alessandrotola/Desktop/Facoltà/AMM/AmmM1/AMM_GruppoA/AmmM1/src/java/Servlet/RegistraProdotto.java</file>
+            <file>file:/Users/alessandrotola/Desktop/Facoltà/AMM/AmmM1/AMM_GruppoA/AmmM1/src/java/Servlet/Login.java</file>
+            <file>file:/Users/alessandrotola/Desktop/Facoltà/AMM/AmmM1/AMM_GruppoA/AmmM1/src/java/amm/model/UtentiFactory.java</file>
+            <file>file:/Users/alessandrotola/Desktop/Facoltà/AMM/AmmM1/AMM_GruppoA/AmmM1/web/WEB-INF/db-definition/crea-db.sql</file>
         </group>
     </open-files>
 </project-private>

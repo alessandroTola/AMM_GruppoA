@@ -13,6 +13,8 @@ import amm.model.Venditore;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,9 +26,24 @@ import javax.servlet.http.HttpSession;
  *
  * @author alessandrotola
  */
-@WebServlet(name = "Login", urlPatterns = {"/Login"})
+@WebServlet(name = "Login", urlPatterns = {"/Login"}, loadOnStartup = 0)
 public class Login extends HttpServlet {
 
+    private static final String JDBC_DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
+    private static final String DB_CLEAN_PATH = "../../web/WEB-INF/db/ammdb";
+    private static final String DB_BUILD_PATH = "WEB-INF/db/ammdb";
+    
+    @Override 
+    public void init(){
+        String dbConnection = "jdbc:derby:" + this.getServletContext().getRealPath("/") + DB_BUILD_PATH;
+        try {
+            Class.forName(JDBC_DRIVER);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        UtentiFactory.getInstance().setConnectionString(dbConnection);
+        OggettiFactory.getInstance().setConnectionString(dbConnection);
+    }
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -47,37 +64,38 @@ public class Login extends HttpServlet {
         {
             String username = request.getParameter("userid");
             String password = request.getParameter("pswd");
-  
-            /*Ttestase se i dati sono null fare a casa */
-            ArrayList<Utenti> listaUtenti = UtentiFactory.getInstance().getUserList();
 
-            /* Ciclo per verificare che i dati inseriti sono o di uno studente o professore se no sono sbagliati */
-            for(Utenti u : listaUtenti)
+            /*Ttestase se i dati sono null fare a casa */
+            Utenti u = UtentiFactory.getInstance().getUtente(username, password);
+
+            if(u != null)
             {
-                if(u.getUsername().equals(username) && 
-                   u.getPassword().equals(password))
+
+                session.setAttribute("loggedIn", true);
+                session.setAttribute("id", u.getId());
+                
+                if(u.getTipo()) /* Controllo il tipo di u */
                 {
-                    session.setAttribute("loggedIn", true);
-                    session.setAttribute("id", u.getId());
+                    session.setAttribute("venditore", u);
+                    session.setAttribute("loggedVenditore", true);
+                    session.setAttribute("loggedCliente", false);
+
+                    request.getRequestDispatcher("Venditore_autenticato.jsp").forward(request, response);
+                } else 
+                {
+                    session.setAttribute("cliente", u);
+                    session.setAttribute("loggedVenditore", false);
+                    session.setAttribute("loggedCliente", true);
                     session.setAttribute("listaProdotti", OggettiFactory.getInstance().getProdottiList());
-                    
-                    if(u instanceof Venditore) /* Controllo il tipo di u */
-                    {
-                        session.setAttribute("venditore", u);
-                        session.setAttribute("loggedVenditore", true);
-                        session.setAttribute("loggedCliente", false);
-                        
-                        request.getRequestDispatcher("Venditore_autenticato.jsp").forward(request, response);
-                    } else 
-                    {
-                        session.setAttribute("cliente", u);
-                        session.setAttribute("loggedVenditore", false);
-                        session.setAttribute("loggedCliente", true);
-                        request.getRequestDispatcher("Cliente_autenticato.jsp").forward(request, response);
-                    }
-                   
+                    request.getRequestDispatcher("Cliente_autenticato.jsp").forward(request, response);
+
                 }
-            }
+            } else {
+                                                System.out.println("Errore login");
+
+                request.getRequestDispatcher("form_login.jsp").forward(request, response);
+                
+            }               
 
         }
             else

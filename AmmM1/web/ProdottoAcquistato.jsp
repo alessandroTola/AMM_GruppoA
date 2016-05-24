@@ -28,19 +28,12 @@ and open the template in the editor.
                 <h3>Quantita - ${prodotto.quantita}</h3>
                 <h3>Immagine</h3><img title="${prodotto.nomeProdotto}" alt="${prodotto.descrizione}" src="${prodotto.linkFoto}" 
                          width="100" height="100">
-                <c:choose>
-                    <c:when test="${cliente.getSaldo().getSaldo() > prodotto.getPrezzo()}" >
-                        <h3>Il tuo saldo disponibile è ${cliente.getSaldo().getSaldo()}</h3>
-                        <h3>Hai abbastanza soldi, conferma acquisto</h3>
-                        <form class="Login-form" action="Acquista" method="post">
-                        <button type="submit" name="Submit">Acquista</button>
-                        </form>
-                    </c:when>
-                    <c:otherwise>
-                        <h3>Mi dispiace non hai abbastanza disponibilità</h3>
-                        <h3>Il tuo saldo disponibile è ${cliente.getSaldo().getSaldo()}</h3>
-                    </c:otherwise>
-                </c:choose>
+                <h3>Il tuo saldo disponibile è ${cliente.getSaldo().getSaldo()}</h3>
+                <h3>Hai abbastanza soldi, conferma acquisto</h3>
+                <form class="Login-form" action="Acquista" method="post">
+                <button type="submit" name="Submit">Acquista</button>
+                </form>
+                    
             </div>
         </div>
                          

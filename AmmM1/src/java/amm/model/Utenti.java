@@ -17,6 +17,7 @@ public class Utenti {
     private String username;
     private String password;
     private Saldo saldo;
+    private boolean tipo;
 
     public Utenti()
     {
@@ -107,8 +108,16 @@ public class Utenti {
     /**
      * @param saldo the saldo to set
      */
-    public void setSaldo(Saldo saldo) {
-        this.saldo = saldo;
+    public void setSaldo(Double saldo) {
+        
+        this.saldo.setSaldo(saldo);
+    }
+    public boolean getTipo(){
+        return tipo;
     }
     
+    public void setTipo(boolean tipo){
+        this.tipo = tipo;
+    }
+            
 }

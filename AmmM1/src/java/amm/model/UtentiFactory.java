@@ -5,6 +5,12 @@
  */
 package amm.model;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -14,20 +20,24 @@ import java.util.ArrayList;
 public class UtentiFactory {
     // Attributi
     private static UtentiFactory singleton;
+    String connectionString; 
+    
     public static UtentiFactory getInstance() {
         if (singleton == null) {
             singleton = new UtentiFactory();
         }
         return singleton;
     }
+/*    
     // Lista Clienti
     private ArrayList<Utenti> listaClienti = new ArrayList<Utenti>();
     // Lista Veditori
     private ArrayList<Utenti> listaVenditori = new ArrayList<Utenti>();
-    
+*/    
     //Costruttore 
     public UtentiFactory(){
-        
+/*  
+    
         //Cliente 1
         Cliente client_1 = new Cliente();
         client_1.setNome("Alessandro");
@@ -70,7 +80,7 @@ public class UtentiFactory {
         //Venditore 2
         Venditore seller_2 = new Venditore();
         seller_2.setNome("Davide");
-        seller_2.setCognome("Spanu");
+        seller_2.setCognome("Spano");
         seller_2.setUsername("HTML");
         seller_2.setPassword("5");
         seller_2.getSaldo().setSaldo(0.5);
@@ -84,13 +94,98 @@ public class UtentiFactory {
         seller_3.setPassword("6");
         seller_3.getSaldo().setSaldo(10000.5);
         listaVenditori.add(seller_3);
-        
+*/        
     }
-    
+
+    /* Metodi */
+    public Utenti getUtente(String username, String password){
+        
+        try{
+            Connection conn = DriverManager.getConnection(connectionString, "AlessandroTola", "0000");
+            //sql command
+            String query = "select * from venditori where  "
+                    + "password = ? and username = ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            //dati
+            stmt.setString(1, password);
+            stmt.setString(2, username);
+            //Risultati
+            ResultSet set = stmt.executeQuery();
+            
+            if(set.next()){
+                Venditore venditore = new Venditore();
+                venditore.setId(set.getInt("id"));
+                venditore.setNome(set.getString("nome"));
+                venditore.setCognome(set.getString("cognome"));
+                venditore.setUsername(set.getString("username"));
+                venditore.setPassword(set.getString("password"));
+                venditore.setTipo(true);
+                
+                //nuova query, corsi assegnati
+                query = "select prodotti.id, prodotti.nomeProdotto, prodotti.descrizione, "
+                        + "prodotti.prezzo, prodotti.linkFoto, prodotti.quantita "
+                        + "from prodotti " 
+                        + "join venditori "
+                        + "on prodotti.seller_id = venditori.id "
+                        + "where prodotti.seller_id = " + venditore.getId();
+                Statement st = conn.createStatement();
+                ResultSet res2 = st.executeQuery(query);
+                while(res2.next()){
+                    Prodotti m = new Prodotti();
+                    m.setId(res2.getInt("id"));
+                    m.setNomeProdotto(res2.getString("nomeProdotto"));
+                    m.setLinkFoto(res2.getString("linkFoto"));
+                    m.setPrezzo(res2.getDouble("prezzo"));
+                    m.setQuantita(res2.getInt("quantita"));
+                    m.setDescrizione(res2.getString("descrizione"));
+                    venditore.listaProdotti.add(m);
+                }
+                st.close();
+                stmt.close();
+                conn.close();
+                
+                return venditore;
+            }
+            
+            query = "select * from clienti where  "
+                    + "password = ? and username = ?";
+            stmt = conn.prepareStatement(query);
+            //dati
+            stmt.setString(1, password);
+            stmt.setString(2, username);
+            //Risultati
+            set = stmt.executeQuery();
+            if(set.next()){
+                Cliente cliente = new Cliente();
+                cliente.setId(set.getInt("id"));
+                cliente.setNome(set.getString("nome"));
+                cliente.setCognome(set.getString("cognome"));
+                cliente.setUsername(set.getString("username"));
+                cliente.setPassword(set.getString("password"));
+                cliente.setSaldo(set.getDouble("saldo"));
+                cliente.setTipo(false);
+         
+                stmt.close();
+                conn.close();
+                
+                return cliente;
+            }
+            
+            stmt.close();
+            conn.close();
+                
+        }catch(SQLException e){
+            System.out.println("ERRORE DEL CAZZO");
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+/*
     public ArrayList<Utenti> getClientiList() {
         return listaClienti;
     }
-    
+   
     public Utenti getCliente(int id)
     {
         for(Utenti u : listaClienti)
@@ -101,7 +196,7 @@ public class UtentiFactory {
         
         return null;
     }
-    
+   
     public ArrayList<Utenti> getVenditoriList() {
         return listaVenditori;
     }
@@ -116,7 +211,7 @@ public class UtentiFactory {
         
         return null;
     }
-    
+   
     public ArrayList<Utenti> getUserList() 
     {
         ArrayList<Utenti> listaUtenti = new ArrayList<Utenti>();
@@ -126,5 +221,11 @@ public class UtentiFactory {
         
         return listaUtenti;
     }
-    
+*/   
+    public void setConnectionString(String s){
+	this.connectionString = s;
+    }
+    public String getConnectionString(){
+	return this.connectionString;
+    }
 }
