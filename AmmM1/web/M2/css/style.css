@@ -173,6 +173,7 @@ li.nevHeader
         float: left;
         margin: 10px;
         margin-top: 30px;
+        margin-right: 4px;
         border: 3px solid #737373; 
         background-color: white;
         opacity: .8;
@@ -233,6 +234,7 @@ li.nevHeader
         float: left;
         margin-left: 10px;
         margin-top: 30px;
+        margin-right: 4px;
         border: 3px solid #737373; 
         background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0));
         opacity: .8;
@@ -327,6 +329,7 @@ li.nevHeader
         height: 200px;
         float: left;
         margin-top: 10px;
+        margin-right: 4px;
         border: 2px solid #737373; 
         background-color: white;
         opacity: .8;
@@ -721,8 +724,10 @@ label {
     width: 150px; 
     font-size: 15px;
 }
+
+
     /* Stili per imput */
-input, textarea {           /* Stili per il campo di testo e per la textarea */
+input, textarea, select {           /* Stili per il campo di testo e per la textarea */
     background: #99ffcc;        
     border: 2px solid white;    
     color: black; 
@@ -736,7 +741,10 @@ input, textarea {           /* Stili per il campo di testo e per la textarea */
     outline: none;
     
 }
- 
+select.scelta {
+    margin-left: 50px;
+}
+
 input 
 { 
     padding-left: 30px;
@@ -751,7 +759,8 @@ textarea {
     overflow: hidden; 
 }
 
-input:focus, textarea:focus {
+
+input:focus, textarea:focus, select:focus {
   border: 2px solid black;   /* bordo degli elementi */
 }
 
@@ -761,10 +770,11 @@ input:focus, textarea:focus {
     {
         width: 600px;
         border: 3px solid white;
-        
         float: left;
     }
-    
+    #risultato {
+        height: 20px;
+    }
     div.form
     {
         width: 480px;
@@ -775,6 +785,16 @@ input:focus, textarea:focus {
         padding-top: 10px;
         border: 3px solid white;
     }
+    
+    div.filtra{
+        height: 50px;
+        width: 480px;
+        display: block;
+        background-color: #99ffcc;
+        border: 3px solid white;
+        margin-top: 10px;
+
+    }
 }
 @media screen and (min-width: 480px)
               and (max-width: 1024px){ 
@@ -782,6 +802,10 @@ input:focus, textarea:focus {
     {
         width: 600px;
         border: 3px solid white;
+    }
+    
+    #risultato {
+        height: 20px;
     }
     div.form
     {
@@ -793,6 +817,16 @@ input:focus, textarea:focus {
         border: 3px solid white;
 
     }
+    
+    div.filtra{
+        height: 50px;
+        width: 480px;
+        display: block;
+        background-color: #99ffcc;
+        border: 3px solid white;
+        margin-top: 10px;
+
+    }
 }
 @media screen and (max-width: 480px){ 
     #table
@@ -801,6 +835,10 @@ input:focus, textarea:focus {
         border: 3px solid white;
         margin: 5px auto;
         margin-top: 30px;
+    }
+    
+    #risultato {
+        height: 20px;
     }
     div.form
     {
@@ -813,6 +851,15 @@ input:focus, textarea:focus {
         border: 3px solid white;
         float: left;
         margin-top: 40px;
+    }
+    div.filtra{
+        height: 50px;
+        width: 480px;
+        display: block;
+        background-color: #99ffcc;
+        border: 3px solid white;
+        margin-top: 140px;
+
     }
 }
 /* Tabella */

@@ -18,6 +18,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,64 +44,30 @@ public class CompraProdotto extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        
+        HttpSession session = request.getSession(true);
         int idProdotto = Integer.parseInt(request.getParameter("idProdotto"));
+        session.setAttribute("idProdotto", idProdotto);
+        
         Prodotti prod = new Prodotti();
         prod = OggettiFactory.getInstance()
                 .getProdotto(idProdotto);
         
         request.setAttribute("prodotto", prod);
-        HttpSession session = request.getSession(true);
         
         int quantita = prod.getQuantita();
+        session.setAttribute("quantita", quantita);
         Utenti cliente = new Cliente();
         
         cliente = (Utenti) session.getAttribute("cliente");
         int idCliente = cliente.getId();
         
-        double saldo = cliente.getSaldo().getSaldo();
-        System.out.println("ecco l'id clienteeee" + saldo);
+        double oldSaldo = UtentiFactory.getInstance().getSaldoSql(idCliente);
+        session.setAttribute("oldSaldo", oldSaldo);
         
-        
-        
-        try{
-            Connection conn = DriverManager.getConnection(UtentiFactory.getInstance().
-                getConnectionString(), "AlessandroTola","0000");
-            
-            Statement stmt = conn.createStatement();
-            String venditore = "select * from prodotti";
-            ResultSet set = stmt.executeQuery(venditore);
-            
-            int idPro = 0;
-            int id_venditore = 0;
-            double costo = 0;
-            while (set.next()) {
-                idPro = set.getInt("id");
-                if(idPro == idProdotto ){
-                    id_venditore = set.getInt("seller_id");
-                    costo = set.getDouble("prezzo");
-                }
-            }
-            if(saldo >= costo){
-                OggettiFactory.getInstance().acquistaProdotto(idProdotto,id_venditore, idCliente, quantita, saldo, costo);
-                request.getRequestDispatcher("ProdottoAcquistato.jsp")
-                .forward(request, response);
-            }else
-                request.getRequestDispatcher("erroreAcquisto.jsp")
-                .forward(request, response);
-                
-        }catch(SQLException e){}
-        
-        
-        
-        if(cliente.getSaldo().getSaldo() > prod.getPrezzo()){
-            request.setAttribute("disponibilita", true);
-            
-        }
-        
-        
+        request.getRequestDispatcher("ProdottoAcquistato.jsp")
+            .forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -114,7 +82,11 @@ public class CompraProdotto extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(CompraProdotto.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -128,7 +100,11 @@ public class CompraProdotto extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(CompraProdotto.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

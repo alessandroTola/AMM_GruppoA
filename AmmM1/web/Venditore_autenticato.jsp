@@ -24,8 +24,15 @@ and open the template in the editor.
                 <div class="content">
                     <div class="form">
                         <h2>Benvenuto </h2>
-                        <h3>${venditore.getNome()} - ${venditore.getCognome()} </h3> 
-                        <jsp:include page="./jspSupporto/registraProdotto.jsp" />
+                        <h3>${venditore.getNome()} - ${venditore.getCognome()} </h3>
+                        <form class="Login-form" action="AzioniVenditore" method="get">
+                            <div ><select class="scelta" name="azione">
+                                <option>Nuovo prodotto</option>
+                                <option>Modifica prodotto</option>
+                                <option>Elimina prodotto</option>
+                                </select></div>
+                            <div class="bottone"><button type="submit" name="Submit">Conferma</button></div>
+                        </form>
                     </div>
                 </div>
             </c:when>

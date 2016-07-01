@@ -20,20 +20,10 @@ and open the template in the editor.
     </head>
     <body>
         <jsp:include page="./jspSupporto/Top_navBar.jsp" />
-            <c:choose>
-            <c:when test="${ loggedIn }" >
-                <div class="content">
-                    <div class="form">
-                        <h2>${u.getNome()} hai già effettuato il login</h2>
-                    </div>
-                </div>
-            </c:when>
-            <c:otherwise>
-                <div class="content">
-                    <jsp:include page="./jspSupporto/loginCl.jsp" />
-                </div>
-            </c:otherwise>
-        </c:choose>
+            
+        <div class="content">
+            <jsp:include page="./jspSupporto/loginCl.jsp" />
+        </div>
         <jsp:include page="./jspSupporto/footer.jsp" />
     </body>
 </html>

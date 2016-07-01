@@ -6,12 +6,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -22,13 +17,13 @@ and open the template in the editor.
     <head>
         <title>Cliente</title>
         <meta name="description" content="Login cliente">
-        <jsp:include page="./jspSupporto/Head.jsp" />    
+        <jsp:include page="/Head.jsp" />    
     </head>
     <body>
         <jsp:include page="./jspSupporto/Top_navBar.jsp" />
             <c:choose>
             <c:when test="${loggedCliente}" >
-                <jsp:include page="./jspSupporto/tabella.jsp" />
+                <jsp:include page="/tabella.jsp" />
             </c:when>
             <c:when test="${loggedVenditore}" >
             <div class="content">
@@ -39,7 +34,7 @@ and open the template in the editor.
             </c:when>
             <c:otherwise>
                 <div class="content">
-                    <jsp:include page="./jspSupporto/loginCl.jsp" />
+                    <jsp:include page="/jspSupporto/loginCl.jsp" />
                 </div>
             </c:otherwise>
         </c:choose>

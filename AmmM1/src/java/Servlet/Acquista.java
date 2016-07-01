@@ -5,13 +5,21 @@
  */
 package Servlet;
 
+import amm.model.Cliente;
+import amm.model.OggettiFactory;
+import amm.model.Utenti;
+import amm.model.UtentiFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -30,10 +38,28 @@ public class Acquista extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
+        
         if(request.getParameter("Submit") != null){
-            request.getRequestDispatcher("Complimenti.jsp").forward(request, response);
+            HttpSession session = request.getSession(true);
+        
+            Utenti cliente = new Cliente();
+            cliente = (Utenti) session.getAttribute("cliente");
+            int idCliente = cliente.getId();
+            int idProdotto = (int) session.getAttribute("idProdotto");
+            int quantita = (int) session.getAttribute("quantita");
+
+            boolean transazione = OggettiFactory.getInstance().acquistaProdotto(idProdotto, idCliente, quantita);
+            double newSaldo = UtentiFactory.getInstance().getSaldoSql(idCliente);
+            session.setAttribute("newSaldo", newSaldo);
+            
+            if(transazione){
+                request.getRequestDispatcher("Complimenti.jsp")
+                .forward(request, response);
+            }else
+                request.getRequestDispatcher("erroreAcquisto.jsp")
+                .forward(request, response);
         }
     }
 
@@ -49,7 +75,11 @@ public class Acquista extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(Acquista.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -63,7 +93,11 @@ public class Acquista extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(Acquista.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

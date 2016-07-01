@@ -5,7 +5,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <h3>Inserisci nuovo prodotto</h3>
 <form id="prodotto" action="RegistraProdotto" method="get">
     <label for="nomeprod">Nome prodotto:</label>

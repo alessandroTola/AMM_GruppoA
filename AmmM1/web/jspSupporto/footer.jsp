@@ -5,7 +5,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <div class="clear"></div>
 <footer><p>Questo bellissimo sito è prodotto da Alessandro Tola</p></footer>
     

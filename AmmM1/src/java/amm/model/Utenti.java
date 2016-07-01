@@ -5,6 +5,12 @@
  */
 package amm.model;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 /**
  *
  * @author alessandrotola
@@ -101,10 +107,13 @@ public class Utenti {
     /**
      * @return the saldo
      */
-    public Saldo getSaldo() {
+    public Saldo getSaldo(){
+        
+        
+        
         return saldo;
     }
-
+    
     /**
      * @param saldo the saldo to set
      */

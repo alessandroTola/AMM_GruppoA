@@ -44,19 +44,27 @@ public class RegistraProdotto extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-                HttpSession session = request.getSession(false);
+        HttpSession session = request.getSession(false);
 
         if(request.getParameter("Submit") != null)
         {
-            
+            // Recupero i dati relativi al prodotto
             String nomeProdotto = request.getParameter("nomeprod");
             String linkFoto = request.getParameter("immagine");
             String descrizione = request.getParameter("descrizione");
-            Double prezzo = Double.parseDouble(request.getParameter("prezzo"));
-            Integer quantita = Integer.parseInt(request.getParameter("quantita"));
+            Double prezzo = 0.0;
+            Integer quantita = 0;
+            if(request.getParameter("prezzo").length()!=0 && request.getParameter("quantita").length()!=0 ){
+                prezzo = Double.parseDouble(request.getParameter("prezzo"));
+                quantita = Integer.parseInt(request.getParameter("quantita"));
+            } else 
+                request.getRequestDispatcher("ErroreDatiProdotto.jsp")
+               .forward(request, response);
+           
             Utenti venditore = (Utenti) session.getAttribute("venditore");
             Integer seller_id = venditore.getId();
-            
+                
+            // Creo un nuovo prodotto con i dati inseriti dal venditore
             Prodotti nuovoProdotto = new Prodotti();
             session.setAttribute("nuovoProdotto", nuovoProdotto);
             nuovoProdotto.setNomeProdotto(nomeProdotto);
@@ -64,17 +72,30 @@ public class RegistraProdotto extends HttpServlet {
             nuovoProdotto.setLinkFoto(linkFoto);
             nuovoProdotto.setPrezzo(prezzo);
             nuovoProdotto.setQuantita(quantita);
-            
-            try{
-                OggettiFactory.getInstance().RegistrazioneProdotto(nomeProdotto, descrizione, prezzo, linkFoto, 
-            quantita, seller_id);
-            }catch(SQLException e){
-                
+            if(!(boolean) session.getAttribute("modifica")){
+                try{
+                    OggettiFactory.getInstance().RegistrazioneProdotto(nomeProdotto, descrizione, prezzo, linkFoto, 
+                        quantita, seller_id);
+                }catch(SQLException e){
+                }
+            } else {
+                int idProd = (int) session.getAttribute("prodottoId");
+                try{
+                    OggettiFactory.getInstance().ModificaProdotto(idProd,nomeProdotto, descrizione, prezzo, linkFoto, 
+                        quantita);
+                }catch(SQLException e){
+                }
             }
+            
+        }else {
+            int idProdotto = Integer.parseInt(request.getParameter("idProdotto"));
+            //Prodotti modifica = OggettiFactory.getInstance().getProdotto(idProdotto);
+            session.setAttribute("modifica", true);
+            session.setAttribute("prodottoId", idProdotto);
+            request.getRequestDispatcher("AggiungiProdotto.jsp")
+               .forward(request, response);
         }
-        
-        
-        
+                
         request.getRequestDispatcher("Nuovo_Prodotto.jsp")
                .forward(request, response);
     }

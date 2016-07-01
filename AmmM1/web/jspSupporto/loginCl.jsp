@@ -5,7 +5,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <div class="form">
     <h3>LOGIN</h3>
     <form class="Login-form" action="Login" method="post">

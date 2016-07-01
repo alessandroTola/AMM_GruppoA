@@ -24,7 +24,7 @@ and open the template in the editor.
         <div class="content">
             <div class="form">
                 <h3>Complimenti acquisto andato a buon fine</h3>
-                <h3>Ora il tuo saldo è di ${cliente.getSaldo().getSaldo()}</h3>
+                <h3>Ora il tuo saldo è di ${newSaldo}</h3>
             </div>
         </div>
         <jsp:include page="./jspSupporto/footer.jsp" />

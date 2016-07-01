@@ -60,48 +60,52 @@ public class Login extends HttpServlet {
         /*creo la variabile di sessione */
         HttpSession session = request.getSession(true);
         
+        
         if(request.getParameter("Submit") != null)
-        {
+        {                
+            /* Recupero i dati d'accesso */
             String username = request.getParameter("userid");
             String password = request.getParameter("pswd");
 
-            /*Ttestase se i dati sono null fare a casa */
             Utenti u = UtentiFactory.getInstance().getUtente(username, password);
 
-            if(u != null)
-            {
+            if(u != null){
 
-                session.setAttribute("loggedIn", true);
-                session.setAttribute("id", u.getId());
-                
-                if(u.getTipo()) /* Controllo il tipo di u */
+                session.setAttribute("loggedIn", true); //Utente esistente 
+                session.setAttribute("id", u.getId());  //Recupero l'id
+                /* Controllo il tipo di u */
+                if(u.getTipo()) 
                 {
                     session.setAttribute("venditore", u);
+                    session.setAttribute("sellerId", u.getId());
                     session.setAttribute("loggedVenditore", true);
                     session.setAttribute("loggedCliente", false);
-
+                    /* Lancio la jsp del ventore autenticato */
                     request.getRequestDispatcher("Venditore_autenticato.jsp").forward(request, response);
-                } else 
-                {
+                } else {
                     session.setAttribute("cliente", u);
                     session.setAttribute("loggedVenditore", false);
                     session.setAttribute("loggedCliente", true);
                     session.setAttribute("listaProdotti", OggettiFactory.getInstance().getProdottiList());
+                    /* Lancio la jsp del cliente autenticato */
                     request.getRequestDispatcher("Cliente_autenticato.jsp").forward(request, response);
 
                 }
             } else {
-                                                System.out.println("Errore login");
-
                 request.getRequestDispatcher("form_login.jsp").forward(request, response);
-                
             }               
+        } 
+        if(session.getAttribute("loggedIn") != null){  
 
-        }
-            else
-                request.getRequestDispatcher("form_login.jsp").forward(request, response);
-                /* mostrare un messaggio di errore perche i dati sono sbagliati */
-    }
+            if((boolean) session.getAttribute("loggedVenditore"))
+                request.getRequestDispatcher("Venditore_autenticato.jsp").forward(request, response);
+            if((boolean) session.getAttribute("loggedCliente"))
+                request.getRequestDispatcher("Cliente_autenticato.jsp").forward(request, response);
+        } else
+            request.getRequestDispatcher("form_login.jsp").forward(request, response);
+    }  
+            
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
